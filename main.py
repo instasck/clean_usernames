@@ -1,4 +1,7 @@
-def create_clean_users_list(userfile_or_list, from_file=True, logs=False, list_it=False):
+import re
+
+
+def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, logs=False):
 
     if from_file:
         usernames = []
