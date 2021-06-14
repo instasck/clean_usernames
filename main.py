@@ -38,6 +38,7 @@ def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, log
         # remove the keyid relavant directive
         username = re.sub(r'\?utm_source.*', '', username)
         username = re.sub(r'\?igshid.*', '', username)
+        username = re.sub(r'\?utm_medium.*', '', username)
 
         # remove non letters/numbers/periods/underscore from name
         validLetters = "abcdefghijklmnopqrstuvwxyz._1234567890"
