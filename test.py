@@ -1,7 +1,7 @@
 from main import create_clean_users_list
 
 # file input test
-usernames_clean = create_clean_users_list('tests/followers.txt', from_file=True, list_it=True, logs=False)
+usernames_clean = create_clean_users_list('tests/followers.txt', from_file=True, list_it=True, logs=False, rm_dup=False)
 #print(usernames_clean)
 
 # text input test
@@ -14,7 +14,7 @@ expected_results = ['zendigii', 'freedom_moses', 'meitalbruner', 'avihay_dei', '
 if len(followers) != len(expected_results):
     print('ERROR ! make expected_results and followers the same length')
     
-usernames_clean = create_clean_users_list(followers, from_file=False, list_it=list_it, logs=True)
+usernames_clean = create_clean_users_list(followers, from_file=False, list_it=list_it, logs=True, rm_dup=False)
 if list_it:
     for i, user in enumerate(usernames_clean):
         if user != expected_results[i]:

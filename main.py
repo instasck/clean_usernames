@@ -1,7 +1,7 @@
 import re
 
 
-def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, logs=False):
+def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, logs=False, rm_dup=False):
 
     if from_file:
         usernames = []
@@ -19,9 +19,6 @@ def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, log
     else:
         usernames = list(userfile_or_list)
 
-    usernames_clean = []
-    
-    
     usernames_clean = [] if list_it else ''
 
     for username in usernames:
@@ -48,7 +45,14 @@ def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, log
         if list_it:
             usernames_clean.append(username)
         else:  # string ready
-            usernames_clean += username + '\n'
+            if not (rm_dup and username in usernames_clean):
+                usernames_clean += username + '\n'
+                usernames_clean.append(username)
+
+
+    # remove duplications
+    if rm_dup and list_it:
+        usernames_clean = list(set(usernames_clean))
         
     if logs:
         print('Number of users:{} \nusers:{}'.format(len(usernames_clean), usernames_clean))
