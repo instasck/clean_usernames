@@ -17,6 +17,8 @@ def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, log
                     if xxx != '':
                         usernames.append(xxx)
     else:
+        if isinstance(userfile_or_list, str):
+            raise TypeError("create_clean_users_list dont get strings")
         usernames = list(userfile_or_list)
 
     usernames_clean = [] if list_it else ''
