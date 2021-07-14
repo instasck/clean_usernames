@@ -48,7 +48,7 @@ def create_clean_users_list(userfile_or_list, from_file=True, list_it=False, log
             usernames_clean.append(username)
         else:  # string ready
             if not (rm_dup and username in usernames_clean):
-                usernames_clean += username + '\n'
+                usernames_clean += username + ('\n' if len(usernames) > 1 else '')
 
     # remove duplications
     if rm_dup and list_it:
